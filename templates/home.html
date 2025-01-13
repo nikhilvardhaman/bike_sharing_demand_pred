@@ -1,0 +1,76 @@
+<html>
+<body>
+    <div class="login">
+        <h1>Bike Sharing Demand Prediction</h1>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <h1>
+                <legend>Enter your query details</legend>
+            </h1>
+            <div class="mb-3">
+                <label class="form-label">Datetime (YYYY-MM-DD hh:mm:ss)</label>
+                <input class="form-control" type="datetime-local" name="datetime" min="2011-01-01T00:00" max="2012-12-31T23:59" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Season</label>
+                <select class="form-control" name="season" required>
+                    <option class="placeholder" selected disabled value="">Select Season</option>
+                    <option value="1">Spring</option>
+                    <option value="2">Summer</option>
+                    <option value="3">Fall</option>
+                    <option value="4">Winter</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Holiday</label>
+                <select class="form-control" name="holiday" required>
+                    <option class="placeholder" selected disabled value="">Is it a Holiday?</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Working Day</label>
+                <select class="form-control" name="workingday" required>
+                    <option class="placeholder" selected disabled value="">Is it a Working Day?</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Weather</label>
+                <select class="form-control" name="weather" required>
+                    <option class="placeholder" selected disabled value="">Select Weather</option>
+                    <option value="1">Clear or Partly Cloudy</option>
+                    <option value="2">Mist</option>
+                    <option value="3">Light Snow or Rain</option>
+                    <option value="4">Heavy Rain or Snow</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Temperature (°C)</label>
+                <input class="form-control" type="number" name="temp" placeholder="Enter Temperature" min="0" step="0.1" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Feels-like Temperature (°C)</label>
+                <input class="form-control" type="number" name="atemp" placeholder="Enter Feels-like Temperature" min="0" step="0.1" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Humidity (%)</label>
+                <input class="form-control" type="number" name="humidity" placeholder="Enter Humidity" min="0" max="100" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Windspeed (m/s)</label>
+                <input class="form-control" type="number" name="windspeed" placeholder="Enter Windspeed" min="0" step="0.1" required />
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict Demand" required />
+            </div>
+        </form>
+
+        <h2>
+            The predicted bike-sharing demand is {{ results }}
+        </h2>
+    </div>
+</body>
+</html>
